@@ -12,6 +12,8 @@ import Navbar from "../../components/navbar/Navbar";
 
 import Footer from "../../components/footer/Footer";
 import { Helmet } from "react-helmet";
+import GoogleLogin from "../../components/SocialLogin/GoogleLogin";
+import axios from "axios";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -37,9 +39,19 @@ const Register = () => {
     }
 
     // console.log(user);
+    const userData = {
+      name,
+      email,
+      photo,
+  
+    }
     createUser(email, password)
       .then((res) => {
         // console.log(res.user);
+        axios.post('https://crud-jwt-server-two.vercel.app/users',userData)
+        .then(res=>{
+          console.log(res.data);
+        })
         updateProfile(res.user, {
           displayName: name,
           photoURL: photo,
@@ -147,6 +159,9 @@ const Register = () => {
               </button>
             </div>
           </form>
+         <div className=" flex justify-center  my-5">
+         <GoogleLogin></GoogleLogin>
+         </div>
           <p className=" text-center pb-3 font-semibold">
             Already have an account !{" "}
             <Link to={"/login"} className=" text-blue-700 font-bold">

@@ -12,6 +12,7 @@ import AssignmentDetails from "../pages/assignmentDetails/AssignmentDetails";
 import GiveMark from "../pages/giveMark/GiveMark";
 import ErrorPage from "../pages/error/ErrorPage";
 import PrivetRoute from "../pages/privetRoute/PrivetRoute";
+import AllUsers from "../pages/OurUsers/AllUsers";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path:'/assignments',
         element:<AllAssignmet></AllAssignmet>
+      },
+      {
+        path:'/allUsers',
+        element:<AllUsers></AllUsers>
       },
       {
         path:'/createAssignments',

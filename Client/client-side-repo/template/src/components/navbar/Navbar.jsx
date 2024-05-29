@@ -69,6 +69,14 @@ const Navbar = () => {
           <>
             <NavLink
               className={"flex justify-center hover:bg-slate-200 "}
+              to={"/allUsers"}
+            >
+              All Users
+            </NavLink>
+          </>
+          <>
+            <NavLink
+              className={"flex justify-center hover:bg-slate-200 "}
               to={"/createAssignments"}
             >
               Create Assignments

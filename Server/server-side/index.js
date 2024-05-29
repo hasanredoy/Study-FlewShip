@@ -233,6 +233,26 @@ const submittedAssignmentsCollection = client
       const result = await getFeature.toArray();
       res.send(result);
     });
+
+    // users collection
+    const usersCollection = client.db('StudyFleshipUsersDB').collection('users')
+    app.get('/users',async(req,res)=>{
+      const result = await usersCollection.find().toArray()
+      res.send(result)
+    })
+    app.post('/users',async(req,res)=>{
+      const usersData = req.body
+      const query= {email: usersData.email}
+      console.log(usersData);
+      const userEmailInDB = await usersCollection.findOne(query)
+      if(userEmailInDB){
+        return res.send({message:'user already exist',insertedId:null})
+      }
+
+      const result = await usersCollection.insertOne(usersData)
+      res.send(result)
+    })
+
   } finally {
   }
 }
